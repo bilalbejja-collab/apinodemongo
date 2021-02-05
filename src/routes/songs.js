@@ -41,7 +41,7 @@ router.post('/', async(req, res, next) => {
     .json(newSong)
 })
 
-//Canción por título
+//Canción por id
 router.get('/:id', async(req, res, next) => {
     let aSong = await Song.findOne({ id: req.params.id })
     res
@@ -50,7 +50,7 @@ router.get('/:id', async(req, res, next) => {
 	
 })
 
-//Borrar canción por título
+//Borrar canción por id
 router.delete('/:id', async(req, res, next) => {
   let aSong = await Song.deleteOne({ id: req.params.id })
   res
