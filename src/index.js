@@ -9,7 +9,7 @@ const server = {
   start() {
 
     mongoose
-      .connect("mongodb://localhost:27017/Songs", { useNewUrlParser: true })
+      .connect("mongodb+srv://admin:fPA2MIhKZRKsCl3w@clusterbilal.dwnnz.mongodb.net/Songs?retryWrites=true&w=majority", { useNewUrlParser: true })
       .then(() => {
         
             const app = express()
