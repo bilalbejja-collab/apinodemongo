@@ -7,25 +7,28 @@ let _server
 
 const server = {
   start() {
+    const mongoAtlasUri =
+      "mongodb+srv://admin:YedTLxpoW1P9DNxe@clusterbilal.dwnnz.mongodb.net/Songs?retryWrites=true&w=majority";
 
-    mongoose
-      .connect("mongodb+srv://admin:fPA2MIhKZRKsCl3w@clusterbilal.dwnnz.mongodb.net/Songs?retryWrites=true&w=majority", { useNewUrlParser: true })
-      .then(() => {
-        
-            const app = express()
+    mongoose.connect(
+      mongoAtlasUri,
+      { useNewUrlParser: true, useUnifiedTopology: true },
+      () => {
 
-            //Configuración .env
-            config(app)
+        const app = express()
 
-            //Añadir router.js
-            router(app)
+        //Configuración .env
+        config(app)
 
-            _server = app.listen(app.locals.config.PORT, () => {
-              if (app.locals.env !== 'test') {
-                console.log('Servidor express arrancado http://localhost:9000')
-              }
-            })
-    })
+        //Añadir router.js
+        router(app)
+
+        _server = app.listen(app.locals.config.PORT, () => {
+          if (app.locals.env !== 'test') {
+            console.log('Servidor express arrancado http://localhost:9000')
+          }
+        })
+      });
 
   },
   close() {
