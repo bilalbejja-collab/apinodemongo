@@ -23,7 +23,7 @@ const server = {
         //Añadir router.js
         router(app)
 
-        _server = app.listen(app.locals.config.PORT, () => {
+        _server = app.listen(process.env.PORT, () => {
           if (app.locals.env !== 'test') {
             console.log('Servidor express arrancado http://localhost:9000')
           }
